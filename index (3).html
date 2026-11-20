@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7eaf3">
+  <meta name="description" content="BLACKLINE MOTORS؛ انتخابی متفاوت در دنیای خودروهای خاص و لوکس.">
+  <title>BLACKLINE MOTORS | Kawaii Auto Atelier</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090909;
+      --surface: #111111;
+      --surface-raised: #171717;
+      --surface-soft: #1d1d1d;
+      --gold: #c6a96b;
+      --gold-light: #e0c58e;
+      --silver: #c6c8ca;
+      --text: #f5f3ef;
+      --muted: #a5a19a;
+      --line: rgba(255,255,255,.10);
+      --container: 1180px;
+      --radius: 5px;
+      --ease: cubic-bezier(.2,.7,.2,1);
+      --shadow: 0 24px 70px rgba(0,0,0,.35);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Vazirmatn", Tahoma, sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    body, button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
+    ::selection { color: #090909; background: var(--gold); }
+
+    .container { width: min(var(--container), calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      color: var(--gold); font: 700 11px/1.4 "DM Sans", sans-serif;
+      letter-spacing: .22em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--gold); }
+    .section-heading { max-width: 650px; margin-bottom: 38px; }
+    .section-heading h2 { margin: 12px 0 10px; font-size: clamp(28px, 4vw, 42px); line-height: 1.35; font-weight: 700; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(9,9,9,.88); backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      min-height: 82px; display: flex; align-items: center;
+      justify-content: space-between; gap: 28px;
+    }
+    .logo { display: inline-flex; flex-direction: column; text-decoration: none; line-height: 1.1; flex-shrink: 0; }
+    .logo-main { font: 800 21px/1 "DM Sans", sans-serif; letter-spacing: .13em; color: var(--text); }
+    .logo-main span { color: var(--gold); }
+    .logo-sub { margin-top: 7px; color: #888; font: 500 8px/1 "DM Sans", sans-serif; letter-spacing: .42em; }
+    .main-nav { display: flex; align-items: center; gap: clamp(18px, 3vw, 38px); }
+    .main-nav a {
+      position: relative; color: #c5c2bc; text-decoration: none;
+      font-size: 13px; transition: color .25s var(--ease);
+    }
+    .main-nav a::after {
+      content: ""; position: absolute; right: 0; bottom: -9px;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width .3s var(--ease);
+    }
+    .main-nav a:hover, .main-nav a:focus-visible { color: var(--gold-light); }
+    .main-nav a:hover::after, .main-nav a:focus-visible::after { width: 100%; }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .header-contact { font-size: 12px; color: var(--gold-light); text-decoration: none; white-space: nowrap; }
+    .menu-toggle {
+      display: none; width: 44px; height: 44px; border: 1px solid var(--line);
+      border-radius: 3px; color: var(--text); background: transparent; cursor: pointer;
+    }
+    .menu-toggle span, .menu-toggle::before, .menu-toggle::after {
+      content: ""; display: block; width: 18px; height: 1px; margin: 5px auto;
+      background: currentColor; transition: transform .25s ease, opacity .25s ease;
+    }
+    .menu-toggle[aria-expanded="true"] span { opacity: 0; }
+    .menu-toggle[aria-expanded="true"]::before { transform: translateY(6px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"]::after { transform: translateY(-6px) rotate(-45deg); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      min-height: 50px; padding: 0 25px; border: 1px solid var(--gold);
+      border-radius: 2px; background: var(--gold); color: #0b0b0b;
+      text-decoration: none; font-size: 13px; font-weight: 700;
+      transition: transform .25s var(--ease), background .25s ease, color .25s ease, box-shadow .25s ease;
+    }
+    .btn:hover { transform: translateY(-3px); background: var(--gold-light); box-shadow: 0 12px 30px rgba(198,169,107,.16); }
+    .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+    .btn-ghost { color: var(--text); background: transparent; border-color: rgba(255,255,255,.28); }
+    .btn-ghost:hover { color: #090909; border-color: var(--gold-light); }
+
+    /* Hero */
+    .hero {
+      position: relative; isolation: isolate; min-height: min(720px, calc(100svh - 82px));
+      display: flex; align-items: center; overflow: hidden;
+      background: #101010 url("assets/images/lamborghini-green.jpg") center 56%/cover no-repeat;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(90deg, rgba(5,5,5,.94) 0%, rgba(5,5,5,.79) 42%, rgba(5,5,5,.24) 100%),
+                  linear-gradient(0deg, rgba(5,5,5,.72), transparent 45%);
+    }
+    .hero-content { max-width: 640px; padding-block: 110px; animation: hero-in .9s var(--ease) both; }
+    .hero-kicker { margin-bottom: 20px; }
+    .hero h1 {
+      margin: 0 0 22px; color: #fff;
+      font: 800 clamp(48px, 8vw, 94px)/.98 "DM Sans", sans-serif;
+      letter-spacing: -.055em; direction: ltr; text-align: right;
+    }
+    .hero h1 span { display: block; margin-top: 12px; color: var(--gold); }
+    .hero-copy { max-width: 470px; margin: 0 0 32px; color: #d0ccc5; font-size: 15px; line-height: 2.1; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-note {
+      position: absolute; left: max(24px, calc((100% - var(--container))/2));
+      bottom: 34px; display: flex; align-items: center; gap: 12px;
+      color: rgba(255,255,255,.65); font: 500 10px "DM Sans", sans-serif; letter-spacing: .2em;
+    }
+    .hero-note::before { content: ""; width: 38px; height: 1px; background: var(--gold); }
+
+
+    /* Luxury vehicle showroom */
+    .showroom-tools { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:-12px 0 28px; }
+    .showroom-count { color:var(--muted); font:500 11px "DM Sans",sans-serif; letter-spacing:.12em; }
+    .showroom-count strong { color:var(--gold); font-size:15px; margin-left:6px; }
+    .cars { grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+    .car { display:flex; flex-direction:column; border-radius:4px; }
+    .car-image { aspect-ratio: 1.48 / 1; }
+    .car-image img { width:100%; height:100%; object-fit:cover; }
+    .car-image.image-unavailable::before { content:attr(data-fallback); font:700 13px "DM Sans",sans-serif; letter-spacing:.15em; }
+    .car-image::after { z-index:0; }
+    .car-number { z-index:2; }
+    .car-info { display:flex; flex:1; flex-direction:column; padding:21px 22px 22px; }
+    .car-kicker { color:var(--gold); font:600 10px "DM Sans",sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+    .car-info h3 { margin:7px 0 5px; font:700 20px "DM Sans","Vazirmatn",sans-serif; }
+    .car-subtitle { color:#aaa69e; font-size:12px; margin:0 0 17px; }
+    .car-specs { display:flex; gap:16px; padding:12px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .car-spec { display:flex; flex-direction:column; gap:2px; }
+    .car-spec small { color:#85817a; font-size:10px; }
+    .car-spec strong { color:#eeeae2; font:600 12px "DM Sans","Vazirmatn",sans-serif; }
+    .car-price-row { display:flex; align-items:end; justify-content:space-between; gap:8px; margin-top:17px; }
+    .car-price { color:var(--gold-light); font:700 19px "DM Sans",sans-serif; white-space:nowrap; }
+    .sample-price { color:#8f8b83; font-size:9px; display:block; margin-top:3px; }
+    .details-btn { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; border:1px solid rgba(198,169,107,.65); color:var(--gold-light); background:transparent; padding:10px 13px; border-radius:2px; cursor:pointer; font:700 10px "DM Sans",sans-serif; letter-spacing:.08em; transition:all .25s ease; white-space:nowrap; }
+    .details-btn:hover { background:var(--gold); color:#090909; transform:translateY(-2px); }
+    .details-modal { position:fixed; inset:0; z-index:300; display:none; place-items:center; padding:20px; background:rgba(0,0,0,.78); backdrop-filter:blur(10px); }
+    .details-modal.is-open { display:grid; }
+    .modal-panel { position:relative; width:min(560px,100%); max-height:min(82vh,760px); overflow:auto; padding:30px; background:#141414; border:1px solid rgba(198,169,107,.4); box-shadow:0 28px 90px #000; }
+    .modal-close { position:absolute; top:12px; left:12px; width:38px; height:38px; color:#eee; border:1px solid var(--line); background:transparent; cursor:pointer; font-size:20px; }
+    .modal-kicker { color:var(--gold); font:600 10px "DM Sans",sans-serif; letter-spacing:.18em; }
+    .modal-panel h3 { margin:10px 0 5px; font:700 27px "DM Sans","Vazirmatn",sans-serif; }
+    .modal-panel p { color:#b5b0a7; font-size:13px; line-height:2; }
+    .modal-note { padding:12px 14px; border-right:2px solid var(--gold); background:#1c1b18; color:#c9c2b5; font-size:11px; line-height:1.9; }
+    .modal-price { margin:18px 0; color:var(--gold-light); font:700 23px "DM Sans",sans-serif; }
+    .modal-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+    @media (max-width:900px) { .cars { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media (max-width:680px) { .cars { grid-template-columns:1fr; } .showroom-tools { margin-top:0; } .modal-panel { padding:25px 20px; } }
+
+    /* Collection */
+    .section { padding-block: 108px; }
+    .collection { background: var(--bg); }
+    .cars { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; }
+    .car {
+      min-width: 0; overflow: hidden; background: var(--surface);
+      border: 1px solid var(--line); transition: transform .35s var(--ease), border-color .35s ease, box-shadow .35s ease;
+    }
+    .car:hover { transform: translateY(-7px); border-color: rgba(198,169,107,.7); box-shadow: var(--shadow); }
+    .car-image { position: relative; overflow: hidden; aspect-ratio: 1.48 / 1; background: radial-gradient(ellipse at 70% 35%, #34302a, #171717 60%, #0d0d0d); }
+    .car-image.image-unavailable::before { content: "BLACKLINE MOTORS"; position: absolute; inset: 0; display: grid; place-items: center; color: rgba(198,169,107,.55); font: 700 13px "DM Sans", sans-serif; letter-spacing: .2em; direction: ltr; }
+    .car-image::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.35)); pointer-events: none; }
+    .car-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease), filter .5s ease; }
+    .car:hover .car-image img { transform: scale(1.055); filter: saturate(1.08); }
+    .car-number { position: absolute; z-index: 1; top: 17px; right: 18px; color: #fff; font: 600 10px "DM Sans", sans-serif; letter-spacing: .18em; }
+    .car-info { padding: 23px 23px 25px; }
+    .car-info h3 { margin: 0 0 7px; font: 700 18px "DM Sans", "Vazirmatn", sans-serif; }
+    .car-info p { margin: 0; color: var(--muted); font-size: 13px; }
+    .car-link { display: inline-flex; align-items: center; gap: 9px; margin-top: 20px; color: var(--gold); font-size: 12px; text-decoration: none; }
+    .car-link span { transition: transform .25s ease; }
+    .car-link:hover span { transform: translateX(-5px); }
+
+    /* About */
+    .about {
+      position: relative; overflow: hidden; background: var(--surface);
+      border-block: 1px solid var(--line);
+    }
+    .about::before {
+      content: "BLACKLINE"; position: absolute; left: -25px; bottom: -75px;
+      color: rgba(255,255,255,.025); font: 800 clamp(90px, 17vw, 220px)/1 "DM Sans", sans-serif;
+      letter-spacing: -.06em; pointer-events: none; direction: ltr;
+    }
+    .about-content { position: relative; max-width: 760px; margin-inline: auto; text-align: center; }
+    .about-content .eyebrow { justify-content: center; }
+    .about-content h2 { margin: 14px 0 18px; font-size: clamp(28px, 4vw, 42px); }
+    .about-content p { margin: 0; color: #b8b4ad; font-size: 14px; line-height: 2.3; }
+
+    /* Contact and footer */
+    .contact { padding-block: 76px; background: #0c0c0c; }
+    .contact-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .contact h2 { margin: 10px 0 5px; font-size: clamp(24px, 3vw, 34px); }
+    .contact p { margin: 0; color: var(--muted); font-size: 13px; }
+    .site-footer { padding-block: 25px; border-top: 1px solid var(--line); background: #070707; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+    .footer-copy { color: #777; font-size: 11px; }
+    .footer-brand { color: #bdb9b1; font: 700 11px "DM Sans", sans-serif; letter-spacing: .13em; }
+    .footer-brand span { color: var(--gold); }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @keyframes hero-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 900px) {
+      .header-inner { min-height: 74px; }
+      .main-nav { gap: 18px; }
+      .header-contact { display: none; }
+      .hero { min-height: 620px; }
+      .cars { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .section { padding-block: 84px; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(100% - 36px, var(--container)); }
+      .header-inner { min-height: 70px; }
+      .logo-main { font-size: 18px; }
+      .menu-toggle { display: block; }
+      .main-nav {
+        position: absolute; top: 100%; right: 0; left: 0;
+        display: none; flex-direction: column; align-items: stretch; gap: 0;
+        padding: 8px 18px 16px; background: rgba(9,9,9,.98);
+        border-bottom: 1px solid var(--line);
+      }
+      .main-nav.is-open { display: flex; }
+      .main-nav a { padding: 12px 4px; border-bottom: 1px solid rgba(255,255,255,.06); }
+      .main-nav a::after { display: none; }
+      .hero { min-height: 590px; background-position: 58% center; }
+      .hero::before { background: linear-gradient(90deg, rgba(5,5,5,.88), rgba(5,5,5,.52)), linear-gradient(0deg, rgba(5,5,5,.7), transparent 65%); }
+      .hero-content { padding-block: 82px 110px; }
+      .hero h1 { font-size: clamp(48px, 14vw, 72px); }
+      .hero-copy { font-size: 14px; }
+      .hero-note { bottom: 22px; }
+      .section { padding-block: 72px; }
+      .section-heading { margin-bottom: 26px; }
+      .cars { grid-template-columns: 1fr; gap: 16px; }
+      .car-image { aspect-ratio: 1.55 / 1; }
+      .contact-inner { align-items: flex-start; flex-direction: column; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 380px) {
+      .container { width: calc(100% - 28px); }
+      .hero-buttons .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important; animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important; transition-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* Kawaii Atelier visual system */
+    :root{color-scheme:light;--bg:#fff9fd;--surface:#fff;--surface-raised:#fff;--surface-soft:#f8eef9;--gold:#b18bc9;--gold-light:#8962ad;--silver:#9ca9bf;--text:#39334b;--muted:#81798f;--line:rgba(145,116,171,.19);--container:1180px;--radius:22px;--shadow:0 22px 60px rgba(127,96,155,.13)}
+    body{background:var(--bg);color:var(--text);background-image:radial-gradient(#e7d8f0 1px,transparent 1px);background-size:26px 26px}
+    ::selection{background:#f6cfe2;color:#51425f}.site-header{background:rgba(255,250,254,.88);border-color:#eadced;box-shadow:0 5px 24px #a88ab51a}
+    .logo-main{color:#554566}.logo-main span{color:#bd8db8}.logo-sub{color:#a28eaa}.main-nav a{color:#665a76}.main-nav a:hover,.main-nav a:focus-visible{color:#b47eaa}.main-nav a::after{background:#d99fc4}.header-contact{color:#986eaa}
+    .menu-toggle{border-color:#e6d6ed;border-radius:14px;color:#806a94;background:#fff}
+    .eyebrow{color:#a67db8}.eyebrow::before{background:#d8a6cb}.btn{border:1px solid #c69acb;border-radius:999px;background:linear-gradient(110deg,#efc7df,#d8c9f4 60%,#c7e8f5);color:#51425f;box-shadow:0 9px 22px #d4b4dc55}.btn:hover{background:linear-gradient(110deg,#f7d5e8,#e0d5fb 60%,#d7f0fa);box-shadow:0 14px 28px #c9a8d866}.btn-ghost{color:#665775;border-color:#d7c4e4;background:#fff9fd;box-shadow:none}.btn-ghost:hover{color:#594568;background:#f7eafa}
+    .hero{background-color:#e9dff0;background-blend-mode:luminosity;min-height:min(720px,calc(100svh - 82px))}.hero::before{background:linear-gradient(90deg,rgba(255,247,253,.96) 0%,rgba(255,247,253,.83) 43%,rgba(248,232,248,.23) 100%),linear-gradient(0deg,rgba(245,226,245,.62),transparent 48%)}.hero h1{color:#544460;text-shadow:0 3px 22px #fff8}.hero h1 span{color:#b47fae}.hero-copy{color:#665c73}.hero-note{color:#fff;text-shadow:0 1px 8px #554}.hero-note::before{background:#fff}
+    .section-heading h2,.about-content h2,.contact h2{color:#554460}.section-heading p,.about-content p{color:#81768d}.collection{background:transparent}.showroom-count{color:#9b8ca5}.showroom-count strong{color:#b47fae}.cars{gap:25px}.car{border:1px solid #ebddec;border-radius:23px;background:#fff;box-shadow:0 10px 30px #bda2c31a}.car:hover{border-color:#d4add6;box-shadow:0 20px 42px #bda2c333}.car-image{background:linear-gradient(135deg,#f4e4f2,#dceefa)}.car-image.image-unavailable::before{color:#a98ab8}.car-number{color:#fff;text-shadow:0 1px 7px #444}.car-info h3{color:#554460}.car-info p{color:#897e95}.car-kicker{color:#ac7cae}.car-specs{border-color:#eee3f0}.car-spec small{color:#9b8ca5}.car-spec strong{color:#5d526a}.car-price{color:#9d70a9}.sample-price{color:#a79bad}.details-btn{border:1px solid #d3b2d8;border-radius:999px;color:#91699e}.details-btn:hover{background:#e8cde9;color:#594568}
+    .about{background:linear-gradient(130deg,#f9edf7,#edf6fc);border-color:#ecdeef}.about::before{color:#9e78b00a}.contact{background:#f9eff8}.contact p{color:#81768d}.site-footer{background:#f4e9f4;border-color:#e9dbea}.footer-brand{color:#5b4b68}.footer-copy{color:#9888a0}
+    .request-section{position:relative;overflow:hidden;padding:110px 0 120px;background:linear-gradient(135deg,#fff4fa 0%,#f3edff 52%,#eaf8ff 100%);border-top:1px solid #eadbed}
+    .request-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(270px,.82fr) minmax(0,1.18fr);align-items:center;gap:clamp(35px,6vw,82px)}
+    .request-intro h2{font-size:clamp(30px,4vw,45px);line-height:1.5;color:#594766;margin:18px 0 13px}.request-intro>p{color:#7f728c;font-size:14px;line-height:2.2;max-width:480px}
+    .mascot-card{position:relative;max-width:380px;margin:28px auto 18px;padding:10px 18px 20px;text-align:center;border:1px solid #ead8ed;border-radius:32px;background:rgba(255,255,255,.65);box-shadow:0 18px 40px #bda2c326;overflow:hidden}.mascot-art{width:min(100%,290px);height:auto;display:block;margin:0 auto -2px;filter:drop-shadow(0 8px 8px #a98db522);animation:mascot-float 4.5s ease-in-out infinite}.mascot-card strong{display:block;color:#80628f;font-size:13px}.mascot-card>span:last-child{display:block;margin-top:4px;color:#ad96b6;font:600 8px "DM Sans",sans-serif;letter-spacing:.16em}.mascot-spark{position:absolute;color:#d58fbd;font-size:28px;animation:sparkle 2.5s ease-in-out infinite}.spark-one{top:22px;left:27px}.spark-two{top:74px;right:25px;animation-delay:.7s}.request-perks{display:flex;flex-wrap:wrap;gap:10px}.request-perks span{padding:8px 12px;border:1px solid #e8d9ed;border-radius:999px;background:#fff9;color:#8c729a;font-size:10px}
+    .request-card{padding:clamp(23px,4vw,42px);border:1px solid #ead8ed;border-radius:30px;background:rgba(255,255,255,.9);box-shadow:0 24px 70px #9f83b32b;backdrop-filter:blur(12px)}.form-heading{display:flex;align-items:center;gap:16px;margin-bottom:25px}.form-sticker{display:grid;place-items:center;width:54px;height:54px;border-radius:19px;background:linear-gradient(135deg,#f8d8e9,#e5d9fb);color:#a66fa8;font-size:27px}.form-kicker{font:700 9px "DM Sans",sans-serif;letter-spacing:.18em;color:#b083ba}.form-heading h3{margin:3px 0;color:#5b4b68;font-size:22px}.form-heading p{margin:0;color:#9a8ca2;font-size:11px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 15px}.field{min-width:0}.field-wide{grid-column:1/-1}.field label{display:block;margin:0 0 8px;color:#685b75;font-size:12px;font-weight:700}.field label i{color:#d47fa9;font-style:normal}.field label small{color:#a497ad;font-weight:400}.field input,.field select,.field textarea{width:100%;min-height:51px;padding:12px 15px;border:1px solid #e6d9ed;border-radius:15px;background:linear-gradient(120deg,#fffafd,#f8f5ff);color:#574c65;font:400 12px "DM Sans","Vazirmatn",sans-serif;outline:none;transition:border-color .22s,box-shadow .22s,transform .22s}.field textarea{min-height:112px;resize:vertical;line-height:1.8}.field input::placeholder,.field textarea::placeholder{color:#b2a6ba}.field input:focus,.field select:focus,.field textarea:focus{border-color:#c39aca;box-shadow:0 0 0 4px #e8d8f4a8,0 8px 18px #bda0cb24;transform:translateY(-1px)}.field select:invalid{color:#aa9eb1}.field input[aria-invalid="true"],.field select[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#dc8da9;box-shadow:0 0 0 3px #fbe5ed}
+    .form-actions{display:flex;align-items:center;flex-wrap:wrap;gap:15px;margin-top:22px}.submit-btn{min-width:190px;cursor:pointer;font:700 12px "DM Sans",sans-serif}.submit-btn:disabled{opacity:.7;cursor:wait;transform:none}.submit-btn.is-loading .submit-label::before{content:"";display:inline-block;width:13px;height:13px;margin-right:9px;vertical-align:-2px;border:2px solid #69577755;border-top-color:#695777;border-radius:50%;animation:spin .7s linear infinite}.privacy-note{color:#a295aa;font-size:10px}.form-error{margin:15px 0 0;padding:11px 14px;border-radius:12px;background:#fff0f3;color:#a54f70;font-size:12px}.form-success{display:flex;align-items:center;gap:13px;margin-top:18px;padding:15px;border:1px solid #cde8d8;border-radius:16px;background:#f0fff6;color:#4c8967;animation:success-pop .4s ease both}.form-success>span{font-size:27px}.form-success strong,.form-success small{display:block}.form-success strong{font-size:13px}.form-success small{margin-top:3px;font-size:11px}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .float-deco{position:absolute;color:#d9a4cf;pointer-events:none;animation:mascot-float 6s ease-in-out infinite}.deco-heart{top:12%;right:5%;font-size:38px}.deco-star{bottom:14%;left:4%;font-size:32px;animation-delay:1s}.deco-flower{top:45%;right:2%;font-size:25px;animation-delay:2s}
+    @keyframes mascot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}@keyframes sparkle{0%,100%{transform:scale(.85) rotate(-8deg);opacity:.65}50%{transform:scale(1.15) rotate(12deg);opacity:1}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes success-pop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+    @media(max-width:900px){.request-layout{grid-template-columns:1fr;max-width:760px}.request-intro{text-align:center}.request-intro>p{margin-inline:auto}.request-perks{justify-content:center}.mascot-card{max-width:330px}.request-section{padding:80px 0}}
+    @media(max-width:680px){.hero{background-position:62% center}.hero::before{background:linear-gradient(90deg,rgba(255,247,253,.94),rgba(255,247,253,.76) 65%,rgba(248,232,248,.4)),linear-gradient(0deg,rgba(245,226,245,.7),transparent)}.hero h1{font-size:clamp(42px,13vw,66px)}.request-card{padding:23px 18px;border-radius:23px}.form-grid{grid-template-columns:1fr;gap:15px}.field-wide{grid-column:auto}.form-actions{align-items:stretch;flex-direction:column}.submit-btn{width:100%}.privacy-note{text-align:center}.deco-heart{right:2%;font-size:25px}.deco-star{left:2%;font-size:24px}.request-intro h2{font-size:30px}}
+    @media(prefers-reduced-motion:reduce){.mascot-art,.mascot-spark,.float-deco{animation:none!important}}
+
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#home" aria-label="BLACKLINE MOTORS - صفحه اصلی">
+        <span class="logo-main">BLACKLINE <span>MOTORS</span></span>
+        <span class="logo-sub">KAWAII AUTO ATELIER ✦</span>
+      </a>
+
+      <nav class="main-nav" id="main-navigation" aria-label="منوی اصلی">
+        <a href="#home">خانه</a>
+        <a href="#cars">خودروها</a>
+        <a href="#about">درباره ما</a>
+        <a href="#contact">ثبت درخواست ✿</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="header-contact" href="#contact">LET’S TALK ✿</a>
+        <button class="menu-toggle" type="button" aria-label="باز کردن منو" aria-controls="main-navigation" aria-expanded="false">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow hero-kicker">✦ THE ART OF DRIVING, WITH A LITTLE MAGIC ✦</div>
+          <h1 id="hero-title">DRIVE <span>YOUR DREAM.</span></h1>
+          <p class="hero-copy">
+            به دنیایی خوش آمدید که عشق به خودرو با زیبایی‌های پاستلی و حال‌وهوای ژاپنی همراه می‌شود؛ جایی برای انتخاب خودروی رؤیایی شما.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn" href="#cars">مشاهده خودروها <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="#contact">ثبت درخواست شما ♡</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-note" aria-hidden="true">KAWAII VIBES · SERIOUS MACHINES ✦</div>
+    </section>
+
+    <section class="section collection" id="cars" aria-labelledby="cars-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">✿ OUR DREAM GARAGE ✿</span>
+          <h2 id="cars-title">گاراژ رؤیایی ما</h2>
+          <p>شش خودروی خاص برای عاشقان رانندگی؛ هر کدام با شخصیت و داستان منحصربه‌فرد خودشان.</p>
+        </div>
+
+        <div class="showroom-tools">
+          <div class="showroom-count"><strong>06</strong> CURATED VEHICLES</div>
+          <div class="showroom-count">PASTEL DREAMS / REAL PERFORMANCE ♡</div>
+        </div>
+
+        <div class="cars">
+          <article class="car reveal">
+            <div class="car-image" data-fallback="PORSCHE 911">
+              <span class="car-number">01 / 06</span>
+              <img src="https://netrun.ir/wp-content/uploads/2018/11/2020-porsche-911-carrera-s-gets-wider-faster-and-safer1.jpg" alt="Porsche 911 Carrera" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('image-unavailable')">
+            </div>
+            <div class="car-info">
+              <span class="car-kicker">GERMAN SPORT ICON</span>
+              <h3>Porsche 911</h3>
+              <p class="car-subtitle">Carrera · Rear-engine sports car</p>
+              <div class="car-specs"><div class="car-spec"><small>MODEL YEAR</small><strong>2024</strong></div><div class="car-spec"><small>BODY</small><strong>Coupe</strong></div></div>
+              <div class="car-price-row"><div><div class="car-price">$145,000</div><span class="sample-price">SAMPLE PRICE · NOT A LIVE OFFER</span></div><a class="details-btn" href="vehicle.html?car=porsche">VIEW DETAILS ↗</a></div>
+            </div>
+          </article>
+
+          <article class="car reveal">
+            <div class="car-image" data-fallback="BMW M4">
+              <span class="car-number">02 / 06</span>
+              <img src="https://ks-japan-kaitori.com/common/upload_data/ks-japan-kaitoricom/image/20230911173750.jpg" alt="BMW M4 Competition" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('image-unavailable')">
+            </div>
+            <div class="car-info">
+              <span class="car-kicker">M PERFORMANCE</span>
+              <h3>BMW M4</h3>
+              <p class="car-subtitle">Competition · High-performance coupe</p>
+              <div class="car-specs"><div class="car-spec"><small>MODEL YEAR</small><strong>2024</strong></div><div class="car-spec"><small>BODY</small><strong>Coupe</strong></div></div>
+              <div class="car-price-row"><div><div class="car-price">$98,000</div><span class="sample-price">SAMPLE PRICE · NOT A LIVE OFFER</span></div><a class="details-btn" href="vehicle.html?car=bmw">VIEW DETAILS ↗</a></div>
+            </div>
+          </article>
+
+          <article class="car reveal">
+            <div class="car-image" data-fallback="MERCEDES-AMG GT">
+              <span class="car-number">03 / 06</span>
+              <img src="https://www.topgear.com/sites/default/files/news-listicle/image/img_4932.jpg" alt="Mercedes-Benz AMG GT" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('image-unavailable')">
+            </div>
+            <div class="car-info">
+              <span class="car-kicker">AMG DRIVING PERFORMANCE</span>
+              <h3>Mercedes-AMG GT</h3>
+              <p class="car-subtitle">Coupe · Grand touring performance</p>
+              <div class="car-specs"><div class="car-spec"><small>MODEL YEAR</small><strong>2024</strong></div><div class="car-spec"><small>BODY</small><strong>Coupe</strong></div></div>
+              <div class="car-price-row"><div><div class="car-price">$135,000</div><span class="sample-price">SAMPLE PRICE · NOT A LIVE OFFER</span></div><a class="details-btn" href="vehicle.html?car=amg">VIEW DETAILS ↗</a></div>
+            </div>
+          </article>
+
+          <article class="car reveal">
+            <div class="car-image" data-fallback="NISSAN GT-R">
+              <span class="car-number">04 / 06</span>
+              <img src="https://images.squarespace-cdn.com/content/v1/59d2ba5218b27d757b622380/1774812917757-SWXZPTQAVC03RQ3URLD6/untitled-2.jpg" alt="Nissan GT-R" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('image-unavailable')">
+            </div>
+            <div class="car-info">
+              <span class="car-kicker">JAPANESE PERFORMANCE</span>
+              <h3>Nissan GT-R</h3>
+              <p class="car-subtitle">Premium · All-weather performance coupe</p>
+              <div class="car-specs"><div class="car-spec"><small>MODEL YEAR</small><strong>2023</strong></div><div class="car-spec"><small>BODY</small><strong>Coupe</strong></div></div>
+              <div class="car-price-row"><div><div class="car-price">$125,000</div><span class="sample-price">SAMPLE PRICE · NOT A LIVE OFFER</span></div><a class="details-btn" href="vehicle.html?car=gtr">VIEW DETAILS ↗</a></div>
+            </div>
+          </article>
+
+          <article class="car reveal">
+            <div class="car-image" data-fallback="TOYOTA SUPRA">
+              <span class="car-number">05 / 06</span>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/2025_Toyota_GR_Supra_3.0_front.jpg/1280px-2025_Toyota_GR_Supra_3.0_front.jpg" alt="Toyota GR Supra 3.0" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('image-unavailable')">
+            </div>
+            <div class="car-info">
+              <span class="car-kicker">GR PURE DRIVING</span>
+              <h3>Toyota Supra</h3>
+              <p class="car-subtitle">GR 3.0 · Front-engine sports coupe</p>
+              <div class="car-specs"><div class="car-spec"><small>MODEL YEAR</small><strong>2025</strong></div><div class="car-spec"><small>BODY</small><strong>Coupe</strong></div></div>
+              <div class="car-price-row"><div><div class="car-price">$58,000</div><span class="sample-price">SAMPLE PRICE · NOT A LIVE OFFER</span></div><a class="details-btn" href="vehicle.html?car=supra">VIEW DETAILS ↗</a></div>
+            </div>
+          </article>
+
+          <article class="car reveal">
+            <div class="car-image" data-fallback="MAZDA RX-7">
+              <span class="car-number">06 / 06</span>
+              <img src="https://collectingcars.imgix.net/017203/J848-KFB-19.jpg?auto=format%2Ccompress&amp;fit=clip&amp;q=85&amp;w=1600" alt="Mazda RX-7 FD" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('image-unavailable')">
+            </div>
+            <div class="car-info">
+              <span class="car-kicker">JDM LEGEND</span>
+              <h3>Mazda RX-7</h3>
+              <p class="car-subtitle">FD Spirit R · Rotary sports coupe</p>
+              <div class="car-specs"><div class="car-spec"><small>MODEL YEAR</small><strong>2002</strong></div><div class="car-spec"><small>BODY</small><strong>Coupe</strong></div></div>
+              <div class="car-price-row"><div><div class="car-price">$62,000</div><span class="sample-price">SAMPLE PRICE · NOT A LIVE OFFER</span></div><a class="details-btn" href="vehicle.html?car=rx7">VIEW DETAILS ↗</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container about-content reveal">
+        <span class="eyebrow">A LITTLE MAGIC, A LOT OF PASSION</span>
+        <h2 id="about-title">دنیای BLACKLINE، با امضای شما</h2>
+        <p>BLACKLINE MOTORS جایی برای کشف خودروهایی است که شخصیت، طراحی و هیجان را کنار هم می‌آورند. ما این تجربه را با فضایی گرم، صمیمی و الهام‌گرفته از زیبایی‌شناسی ژاپنی بازطراحی کرده‌ایم؛ چون انتخاب خودروی بعدی‌تان باید به‌اندازه رانندگی با آن لذت‌بخش باشد.</p>
+      </div>
+    </section>
+
+    <section class="request-section" id="contact" aria-labelledby="request-title">
+      <div class="container request-layout">
+        <div class="request-intro">
+          <span class="eyebrow">✦ YOUR NEXT CHAPTER STARTS HERE ✦</span>
+          <h2 id="request-title">بیایید خودروی رؤیایی‌تان را پیدا کنیم!</h2>
+          <p>فرم را پر کنید تا تیم BLACKLINE با شما تماس بگیرد. چه دنبال خرید باشید، چه یک تست رانندگی یا فقط اطلاعات بیشتر، خوشحال می‌شویم کمکتان کنیم.</p>
+          <div class="mascot-card" aria-label="تصویرسازی اختصاصی ماسکات گربه‌ای بامزه">
+            <span class="mascot-spark spark-one">✦</span><span class="mascot-spark spark-two">♡</span>
+            <svg class="mascot-art" viewBox="0 0 300 270" role="img" aria-label="ماسکات گربه‌ای سفید با پاپیون صورتی کنار یک خودروی کوچک آبی">
+              <defs><linearGradient id="fur" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#e9e3f7"/></linearGradient><linearGradient id="carpaint"><stop stop-color="#a8dff4"/><stop offset="1" stop-color="#b8a4e8"/></linearGradient></defs>
+              <ellipse cx="150" cy="239" rx="110" ry="13" fill="#d8c4e8" opacity=".5"/>
+              <path d="M38 185h218l-13-37c-4-12-14-20-27-20H94c-12 0-23 7-28 18z" fill="url(#carpaint)" stroke="#7f8fc5" stroke-width="4"/>
+              <path d="M83 148l18-25h89l24 25z" fill="#e8f7ff" stroke="#7f8fc5" stroke-width="4"/>
+              <circle cx="85" cy="188" r="17" fill="#706d91"/><circle cx="85" cy="188" r="8" fill="#f7eafa"/><circle cx="221" cy="188" r="17" fill="#706d91"/><circle cx="221" cy="188" r="8" fill="#f7eafa"/>
+              <path d="M113 112l-8-53 45 26 43-26-5 55" fill="url(#fur)" stroke="#aaa0c8" stroke-width="4" stroke-linejoin="round"/>
+              <ellipse cx="151" cy="113" rx="62" ry="56" fill="url(#fur)" stroke="#aaa0c8" stroke-width="4"/>
+              <path d="M128 113q-8-9-16 0M177 113q-8-9-16 0" fill="none" stroke="#514b69" stroke-width="5" stroke-linecap="round"/>
+              <path d="M147 126q5 5 10 0" fill="none" stroke="#d68aa9" stroke-width="4" stroke-linecap="round"/><circle cx="119" cy="128" r="8" fill="#f3b5ca" opacity=".8"/><circle cx="181" cy="128" r="8" fill="#f3b5ca" opacity=".8"/>
+              <path d="M177 69q-4-20 14-26 2 19-14 26M177 69q17-22 34-8-12 16-34 8" fill="#f3a9c7" stroke="#d17ea4" stroke-width="3"/>
+              <path d="M143 164q-17 8-21 27M160 164q17 8 21 27" fill="none" stroke="#aaa0c8" stroke-width="8" stroke-linecap="round"/>
+              <path d="M143 151q8 8 16 0" fill="none" stroke="#d68aa9" stroke-width="3"/>
+            </svg>
+            <strong>Hana says: let’s find your perfect ride! ♡</strong>
+            <span>はな · YOUR FRIENDLY GARAGE GUIDE</span>
+          </div>
+          <div class="request-perks"><span>♡ پاسخ‌گویی دوستانه</span><span>✦ مشاوره اختصاصی</span><span>☁ بدون تعهد خرید</span></div>
+        </div>
+        <div class="request-card">
+          <div class="form-heading"><span class="form-sticker">✿</span><div><span class="form-kicker">CUSTOMER REQUEST</span><h3>فرم درخواست مشتری</h3><p>فیلدهای ستاره‌دار الزامی هستند.</p></div></div>
+          <form id="customer-request-form" name="customer-requests" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="customer-requests">
+            <p class="visually-hidden"><label>برای ارسال خالی بگذارید: <input name="bot-field"></label></p>
+            <div class="form-grid">
+              <div class="field"><label for="full-name">نام و نام خانوادگی <i>*</i></label><input id="full-name" name="fullName" type="text" placeholder="Enter your full name" autocomplete="name" required minlength="3"></div>
+              <div class="field"><label for="phone">شماره تماس <i>*</i></label><input id="phone" name="phone" type="tel" inputmode="tel" placeholder="Enter your phone number" autocomplete="tel" required></div>
+              <div class="field"><label for="email">ایمیل <small>(اختیاری)</small></label><input id="email" name="email" type="email" placeholder="Enter your email address (optional)" autocomplete="email"></div>
+              <div class="field"><label for="vehicle">خودروی موردنظر <i>*</i></label><select id="vehicle" name="vehicle" required><option value="" selected disabled>Select a vehicle</option><option>Porsche 911 Carrera</option><option>BMW M4 Competition</option><option>Mercedes-AMG GT Coupe</option><option>Nissan GT-R Premium</option><option>Toyota Supra GR 3.0</option><option>Mazda RX-7 FD Spirit R</option><option>Other</option></select></div>
+              <div class="field field-wide"><label for="request-type">نوع درخواست <i>*</i></label><select id="request-type" name="requestType" required><option value="" selected disabled>Choose your request type</option><option>Vehicle Purchase</option><option>Price Inquiry</option><option>Test Drive</option><option>Vehicle Information</option><option>Other</option></select></div>
+              <div class="field field-wide"><label for="details">توضیحات بیشتر <small>(اختیاری)</small></label><textarea id="details" name="details" rows="4" placeholder="Tell us more about your request..."></textarea></div>
+            </div>
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+            <div class="form-actions"><button class="btn submit-btn" id="submit-request" type="submit"><span class="submit-label">Submit Request</span><span aria-hidden="true">♡</span></button><span class="privacy-note">اطلاعات شما فقط برای پیگیری درخواستتان استفاده می‌شود.</span></div>
+            <div class="form-success" id="form-success" role="status" aria-live="polite" hidden><span>✿</span><div><strong>درخواستت با موفقیت ارسال شد!</strong><small>Hana و تیم BLACKLINE به‌زودی با شما تماس می‌گیرند ♡</small></div></div>
+          </form>
+        </div>
+      </div>
+      <div class="float-deco deco-heart">♡</div><div class="float-deco deco-star">✦</div><div class="float-deco deco-flower">✿</div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">BLACKLINE <span>MOTORS</span></div>
+      <p class="footer-copy">© 2026 BLACKLINE MOTORS. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const menuButton = document.querySelector(".menu-toggle");
+      const navigation = document.querySelector("#main-navigation");
+
+      if (menuButton && navigation) {
+        const closeMenu = () => {
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.setAttribute("aria-label", "باز کردن منو");
+          navigation.classList.remove("is-open");
+        };
+
+        menuButton.addEventListener("click", () => {
+          const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+          menuButton.setAttribute("aria-expanded", String(!isOpen));
+          menuButton.setAttribute("aria-label", isOpen ? "باز کردن منو" : "بستن منو");
+          navigation.classList.toggle("is-open", !isOpen);
+        });
+
+        navigation.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("keydown", event => {
+          if (event.key === "Escape") closeMenu();
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 680) closeMenu();
+        });
+      }
+
+
+      const revealItems = document.querySelectorAll(".reveal");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if ("IntersectionObserver" in window && !reduceMotion) {
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        revealItems.forEach(item => observer.observe(item));
+      } else {
+        revealItems.forEach(item => item.classList.add("is-visible"));
+      }
+    })();
+  </script>
+
+  <script>
+  (() => {
+    const form = document.getElementById('customer-request-form');
+    if (!form) return;
+    const submit = document.getElementById('submit-request');
+    const errorBox = document.getElementById('form-error');
+    const successBox = document.getElementById('form-success');
+    const phone = document.getElementById('phone');
+    const fields = [...form.querySelectorAll('input:not([type="hidden"]):not([name="bot-field"]),select,textarea')];
+    const phonePattern = /^[+()\d\s.-]{7,20}$/;
+    const showError = (message, field) => {
+      errorBox.textContent = message;
+      errorBox.hidden = false;
+      if (field) { field.setAttribute('aria-invalid','true'); field.focus(); }
+    };
+    fields.forEach(field => field.addEventListener('input', () => field.removeAttribute('aria-invalid')));
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      errorBox.hidden = true; successBox.hidden = true;
+      const invalid = fields.find(field => !field.checkValidity() || (field.required && !field.value.trim()));
+      if (invalid) { showError(invalid.validity.typeMismatch ? 'لطفاً ایمیل معتبر وارد کنید.' : 'لطفاً فیلدهای ضروری را به‌درستی تکمیل کنید.', invalid); return; }
+      if (!phonePattern.test(phone.value.trim()) || phone.value.replace(/\D/g,'').length < 7) { showError('لطفاً شماره تماس معتبر وارد کنید.', phone); return; }
+      const email = document.getElementById('email');
+      if (email.value && !email.validity.valid) { showError('فرمت ایمیل واردشده معتبر نیست.', email); return; }
+      submit.disabled = true; submit.classList.add('is-loading'); submit.querySelector('.submit-label').textContent = 'Sending...';
+      try {
+        const data = new URLSearchParams();
+        for (const [key,value] of new FormData(form).entries()) data.append(key,value);
+        const response = await fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data.toString() });
+        if (!response.ok) throw new Error('The form endpoint returned ' + response.status);
+        form.reset(); successBox.hidden = false; successBox.scrollIntoView({behavior:'smooth',block:'nearest'});
+      } catch (err) {
+        showError('ارسال درخواست انجام نشد. لطفاً اتصال اینترنت را بررسی کنید یا مستقیماً با نمایشگاه تماس بگیرید.');
+      } finally {
+        submit.disabled = false; submit.classList.remove('is-loading'); submit.querySelector('.submit-label').textContent = 'Submit Request';
+      }
+    });
+  })();
+  </script>
+
+</body>
+</html>
